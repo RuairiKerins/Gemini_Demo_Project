@@ -9,12 +9,9 @@ class GoogleVideoAnalyzer
   end
 
   def call(video:, prompts:)
-    binding.pry
     bytes, mime, name = coerce_video(video)
-    binding.pry
     upload_url = start_resumable_upload(content_length: bytes.bytesize, content_type: mime, display_name: name)
     file_uri   = upload_and_finalize(upload_url, bytes)
-    binding.pry
     analyze_video(file_uri: file_uri, mime: mime, prompts: prompts)
   end
 
