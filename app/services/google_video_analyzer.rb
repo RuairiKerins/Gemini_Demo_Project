@@ -12,6 +12,7 @@ class GoogleVideoAnalyzer
     bytes, mime, name = coerce_video(video)
     upload_url = start_resumable_upload(content_length: bytes.bytesize, content_type: mime, display_name: name)
     file_uri   = upload_and_finalize(upload_url, bytes)
+    sleep 5 # wait for processing make this better in prod
     analyze_video(file_uri: file_uri, mime: mime, prompts: prompts)
   end
 
