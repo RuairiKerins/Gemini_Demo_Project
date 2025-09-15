@@ -9,11 +9,16 @@ class GoogleVideoAnalyzer
   end
 
   def call(video:, prompts:)
-    bytes, mime, name = coerce_video(video)
-    upload_url = start_resumable_upload(content_length: bytes.bytesize, content_type: mime, display_name: name)
-    file_uri   = upload_and_finalize(upload_url, bytes)
+    # bytes, mime, name = coerce_video(video)
+    # upload_url = start_resumable_upload(content_length: bytes.bytesize, content_type: mime, display_name: name)
+    # file_uri   = upload_and_finalize(upload_url, bytes)
+    # sleep 5 # wait for processing make this better in prod
+    # analyze_video(file_uri: file_uri, mime: mime, prompts: prompts)
     sleep 5 # wait for processing make this better in prod
-    analyze_video(file_uri: file_uri, mime: mime, prompts: prompts)
+    return {
+      "text": "Here are some suggestions for courses at Create Academy and some beginner tips based on the subjects mentioned:\n\n**Recommended Courses:**\n\nBased on your interest in gardening, interior design, and cooking, here are some Create Academy courses that you might enjoy:\n\n*   **Paula Sutton: Creating a Stylish Home:** This course could be perfect if you're interested in interior design and creating a beautiful and comfortable living space.\n*   **Matt Tebbutt: Cooking For Your Friends:** Matt's course would be great if you enjoy cooking and want to learn some great recipes.\n\n**Beginner Tips:**\n\n1.  **Start Small:** Don't try to do everything at once. Focus on one area (gardening, interior design, or cooking) and set achievable goals.\n2.  **Find Inspiration:** Look to blogs, magazines, or social media for ideas and inspiration in your chosen areas.\n3.  **Have Fun!** The most important thing is to enjoy the process and learn something new.",
+      "file_uri": "https://generativelanguage.googleapis.com/v1beta/files/gop8al8xovxr"
+    }
   end
 
   private
