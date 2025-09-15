@@ -8,6 +8,7 @@ class HomeController < ApplicationController
       "List 3 actionable beginner tips.",
       "Create Academy is an online learning platform that offers visual learning and a desire to uncover how exceptional creatives work.",
       "The course catalog is available at https://www.createacademy.com/online-courses",
+      "This response is customer facing so keep it concise and avoid jargon and tailor wordings positivly.",
     ]
     result = GoogleVideoAnalyzer.new.call(video: params.require(:video), prompts: prompts)
 
