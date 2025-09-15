@@ -13,14 +13,18 @@
 
   <!-- Main Content -->
   <main class="py-24 flex-grow">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center" data-controller="visibility">
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">Upload A video below</h1>
       <p class="mt-4 text-base sm:text-lg text-gray-600">We will analyse it for you and recommend some of our courses for you</p>
-      <div class="mt-8 mx-auto max-w-md border-2 border-slate-200 rounded-lg p-6 text-left">
+      <div class="mt-8 mx-auto max-w-md border-2 border-slate-200 rounded-lg p-6 text-left"
+        data-visibility-target="hideable"
+      >
         <%= render "form" %>
       </div>
-      <turbo-frame id="response">
-        <div class="text-sm text-gray-500">No analysis yet.</div>
+      <turbo-frame id="response" class="hidden"
+        data-visibility-target="hideable"
+      >
+        <div class="text-sm text-gray-500">Working on it for you!</div>
       </turbo-frame>
     </div>
   </main>
