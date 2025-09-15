@@ -10,10 +10,26 @@ class HomeController < ApplicationController
       "The course catalog is available at https://www.createacademy.com/online-courses",
       "This response is customer facing so keep it concise and avoid jargon and tailor wordings positivly.",
     ]
-    result = GoogleVideoAnalyzer.new.call(video: params.require(:video), prompts: prompts)
+    @result = GoogleVideoAnalyzer.new.call(video: params.require(:video), prompts: prompts)
 
-    render json: result
+
+    respond_to do |format|
+      format.turbo_stream  # will render analyze.turbo_stream.erb
+      format.html { redirect_to root_path, notice: "Analyzed" }
+      format.json { render json: @result }
+    end
   rescue => e
-    render json: { error: e.message }, status: :unprocessable_content
+    @error = e.message
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace(
+          "response",
+          partial: "home/error",
+          locals: { message: @error }
+        )
+      end
+      format.html { redirect_to root_path, alert: @error }
+      format.json { render json: { error: @error }, status: :unprocessable_entity }
+    end
   end
 end

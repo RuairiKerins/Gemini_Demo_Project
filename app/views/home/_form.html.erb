@@ -1,6 +1,6 @@
 <%= form_with url: home_analyze_path,
               html: { multipart: true, class: "flex flex-col gap-4" },
-              local: true do |f| %>
+              data: { turbo: true } do |f| %>
 
   <label class="text-sm font-medium">Upload video</label>
   <%= f.file_field :video,
