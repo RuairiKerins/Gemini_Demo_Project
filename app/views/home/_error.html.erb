@@ -1,7 +1,4 @@
-<%= turbo_frame_tag(
-    "response",
-    data: { visibility_target: "hideable" } 
-    ) do %>
+<%= turbo_frame_tag "response" do %>
     <div class="p-4 border rounded bg-red-50 text-red-900">
         <strong>Something went wrong:</strong> <%= message %>
     </div>

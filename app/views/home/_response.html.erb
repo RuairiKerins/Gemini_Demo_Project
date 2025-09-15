@@ -1,7 +1,4 @@
-<%= turbo_frame_tag(
-    "response",
-    data: { visibility_target: "hideable" } 
-    ) do %>
+<%= turbo_frame_tag "response" do %>
   <div class="p-4 border rounded text-left">
     <h3 class="font-semibold mb-2">Analysis</h3>
     <pre class="text-sm bg-gray-50 p-3 rounded overflow-x-auto"><%= JSON.pretty_generate(result) %></pre>

@@ -21,11 +21,11 @@
       >
         <%= render "form" %>
       </div>
-      <turbo-frame id="response" class="hidden"
-        data-visibility-target="hideable"
-      >
-        <div class="text-sm text-gray-500">Working on it for you!</div>
-      </turbo-frame>
+      <div class="hidden" data-visibility-target="hideable">
+        <turbo-frame id="response">
+          <div class="text-sm text-gray-500">Working on it for you!</div>
+        </turbo-frame>
+      </div>
     </div>
   </main>
 
