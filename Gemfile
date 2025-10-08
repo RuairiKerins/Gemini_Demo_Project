@@ -56,7 +56,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "httparty", "~> 0.23.1"
+  gem "httparty", "~> 0.23.2"
   gem "pry", "~> 0.15.2"
 end
 
